@@ -1,0 +1,48 @@
+/*Sample Input:
+   2
+   5
+   23 2 4 1 -1
+   8
+   34 56 -1 4 67 2 -1 43
+Sample Output:
+   23 2 4 1 7
+   34 56 45 4 67 2 34 43
+EXPLANATION:
+Example Case 1: For last area, ⌊(23+2+4+1)4⌋=7⌊(23+2+4+1)4⌋=7 bullets
+Example Case 2: For 3rd3rd area, ⌊(34+56)2⌋=45⌊(34+56)2⌋=45 bullets
+Then, for 7th7th area, ⌊(34+56+45+4+67+2)6⌋=34⌊(34+56+45+4+67+2)6⌋=34 bullets*/
+
+
+
+
+#include <stdio.h>
+#include<math.h>
+int main(void) {
+	// your code goes here
+	int tc;
+	scanf("%d",&tc);
+	while(tc--)
+	{
+	    long int n;
+	    scanf("%ld",&n);
+	    long int a[n],ps[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        scanf("%ld",&a[i]);
+	        if(i==0)
+	            ps[i]=a[i];
+	        else
+	        {
+	            if(a[i]==-1)
+	                a[i]=floor(ps[i-1]/i);
+	            ps[i]=ps[i-1]+a[i];
+	        }
+	    }
+	    for(int i=0;i<n;i++)
+	       printf("%d ",a[i]);
+	   printf("\n");
+	}
+	
+	return 0;
+}
+
