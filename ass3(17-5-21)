@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    long long int convertEvenBitToZero(long long int n) {
+        // code here
+        return (n& 0xAAAAAAAA);
+    }
+};
+int main()
+{
+   int t;
+cin>>t;
+while(t--)
+{
+    long long ont n;
+   cin>>n;
+   Solution ob;
+   cout<<ob.convertEvenBitToZero(n)<<endl;
+}
+return 0;
+}
