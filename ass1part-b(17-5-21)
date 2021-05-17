@@ -1,0 +1,21 @@
+#include<stdio.h>
+long long int fact(long long int n)
+{
+	long long int f=1;
+	if(n==1)
+	   return n;
+	else
+	   return n*fact(n-1);
+}
+void main()
+{
+	long long int fact(long long int);
+	long long int t;
+	scanf("%lld",&t);
+	while(t--)
+	{
+		long long int n;
+		scanf("%lld",&n);
+		printf("%lld\n",fact(n));
+	}
+}
