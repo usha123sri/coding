@@ -1,0 +1,26 @@
+//Array reverse using sinle argument
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void ArrayReverse(int l,int a[])
+{
+    if(l>n/2)
+    {
+        return;
+    }
+    swap(a[l],a[n-1-l]);
+    return ArrayReverse(l+1,a);
+}
+
+int main()
+{
+    int n=4;
+    int i=1;
+    int a[n]={2,3,1,4};
+    ArrayReverse(0,a);
+    for(auto i:a)
+    {
+        cout<<i<<" ";
+    }
+}
