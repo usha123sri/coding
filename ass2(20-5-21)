@@ -1,0 +1,49 @@
+//Little Monk and Balanced Parentheses
+/*
+Input Format:
+First line contains an input N , denoting the number of parentheses. Second line contains N space separated integers.   denoting the  parentheses of the array.
+
+Output Format:
+Print the length of the longest subarray that is balanced.
+
+SAMPLE INPUT 
+5
+1 -1 2 3 -2
+SAMPLE OUTPUT 
+2
+Explanation
+The longest subarray that is balanced is .  is not balanced as 3 is not balanced.
+*/
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+		int n;
+		cin>>n;
+		int a[n+1];
+		for(int i=1;i<=n;i++)
+		   cin>>a[i];
+		stack<int>st;
+		st.push(0);
+		int len=0;
+		for(int i=1;i<=n;i++)
+		{
+			if(a[i] > 0)
+			{
+				st.push(i);
+				continue;
+			}
+			if(st.top() == -1*a[i])
+            {
+				st.pop();
+				len=max(len,i-st.top());
+			}
+			else
+			   st.push(i);
+		}
+		cout<<len<<"\n";
+		return 0;
+}
+
