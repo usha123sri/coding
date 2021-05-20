@@ -1,0 +1,60 @@
+//Balanced Brackets
+/*
+Sample Input
+
+STDIN Function ----- -------- 3 n = 3 {[()]} first s = '{[()]}' {[(])} second s = '{[(])}' {{[[(())]]}} third s ='{{[[(())]]}}'
+
+Sample Output
+
+YES
+NO
+YES
+Explanation
+
+The string {[()]} meets both criteria for being a balanced string.
+The string {[(])} is not balanced because the brackets enclosed by the matched pair { and } are not balanced: [(]).
+The string {{[[(())]]}} meets both criteria for being a balanced string.
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int tc;
+    cin>>tc;
+    while(tc--)
+    {
+        int flag=1;
+        string s;
+        cin>>s;
+        stack<char>st;
+        for(auto i:s)
+        {
+            if(i=='[' || i=='{' || i=='(')
+                 st.push(i);
+            else
+            {
+                if(i==']' && !st.empty() && st.top()=='[')
+                    st.pop();
+                else if(i=='}' && !st.empty() && st.top()=='{')
+                    st.pop();
+                else if(i==')' && !st.empty() && st.top()=='(')
+                    st.pop();
+                else
+                {
+                   flag=0;
+                   break; 
+                }
+                     
+            }
+        }
+        if(st.size() != 0 || flag == 0)
+            cout<<"NO"<<"\n";
+        else
+            cout<<"YES"<<"\n";
+        
+    }
+    return 0;
+}
